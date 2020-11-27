@@ -20,6 +20,11 @@ class Notification implements FcmResource
     protected $image;
 
     /**
+     * @var string|null
+     */
+    protected $clickAction;
+
+    /**
      * @return string|null
      */
     public function getTitle(): ?string
@@ -77,6 +82,25 @@ class Notification implements FcmResource
     }
 
     /**
+     * @return string|null
+     */
+    public function getClickAction(): ?string
+    {
+        return $this->clickAction;
+    }
+
+    /**
+     * @param  string|null  $clickAction
+     * @return Notification
+     */
+    public function setClickAction(?string $clickAction): Notification
+    {
+        $this->clickAction = $clickAction;
+
+        return $this;
+    }
+
+    /**
      * @return static
      */
     public static function create(): self
@@ -93,6 +117,7 @@ class Notification implements FcmResource
             'title' => $this->getTitle(),
             'body' => $this->getBody(),
             'image' => $this->getImage(),
+            'click_action' => $this->getClickAction(),
         ];
     }
 }
